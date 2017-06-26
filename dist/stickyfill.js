@@ -287,7 +287,8 @@
                     borderLeftWidth: parseNumeric(parentComputedStyle.borderLeftWidth),
                     borderRightWidth: parseNumeric(parentComputedStyle.borderRightWidth),
                     borderTopWidth: parseNumeric(parentComputedStyle.borderTopWidth),
-                    borderBottomWidth: parseNumeric(parentComputedStyle.borderBottomWidth)
+                    borderBottomWidth: parseNumeric(parentComputedStyle.borderBottomWidth),
+                    paddingTop: parseNumeric(parentComputedStyle.paddingTop)
                 }
             },
 
@@ -298,7 +299,7 @@
                     right: html.clientWidth - nodeOffset.win.right
                 },
                 offset: {
-                    top: nodeOffset.win.top - parentOffset.win.top - parent.numeric.borderTopWidth,
+                    top: nodeOffset.win.top - parentOffset.win.top - parent.numeric.borderTopWidth - parent.numeric.paddingTop,
                     left: nodeOffset.win.left - parentOffset.win.left - parent.numeric.borderLeftWidth,
                     right: -nodeOffset.win.right + parentOffset.win.right - parent.numeric.borderRightWidth
                 },
@@ -312,7 +313,7 @@
                 inited: false,
                 parent: parent,
                 limit: {
-                    start: nodeOffset.doc.top - numeric.top,
+                    start: nodeOffset.doc.top - numeric.top - parent.numeric.paddingTop,
                     end: parentOffset.doc.top + parentNode.offsetHeight - parent.numeric.borderBottomWidth -
                         node.offsetHeight - numeric.top - numeric.marginBottom
                 }
